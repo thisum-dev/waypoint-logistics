@@ -349,7 +349,7 @@ class StoreManagerApiService {
   private orders: StoreOrder[] = [];
   private discrepancies: DiscrepancyClaimData[] = [];
   private hydrated = false;
-  private readonly apiBase = (process.env.NEXT_PUBLIC_API_URL || '/api/v1').replace(/\/$/, '');
+  private readonly apiBase = (typeof window === 'undefined' && process.env.API_URL ? process.env.API_URL : process.env.NEXT_PUBLIC_API_URL || '/api/v1').replace(/\/$/, '');
 
   constructor() {
     this.seedInitialState();
